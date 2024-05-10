@@ -1,0 +1,89 @@
+<!----Tempeture Convertor app-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tempreture Convertor</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" width="device=width,initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-------Tempreture Convertor-->
+
+    <div class="cover">
+      <h2 style="text-align: center; font-size: 40px; padding: 30px">
+        Tempreture Converter
+      </h2>
+      <h1 id="celcius"></h1>
+      <h2 id="kelvin"></h2>
+      <h3 id="farhenheight"></h3>
+
+      <input type="text" id="number" name="number" />
+      <input type="text" id="value1" name="number" />
+      <select name="tempreture" class="Choose_tempreture" id="select">
+        <option value="Celcius">Celcius</option>
+        <option value="Farenheight">Farenheight</option>
+        <option value="Kelvin">Kelvin</option>
+      </select>
+      <input type="text" id="value2" name="number" />
+
+      <br />
+      <input
+        type="button"
+        onclick="conversion()"
+        value="Convert"
+        id="convert"
+      />
+
+      <script>
+        function conversion() {
+          let inputValue = document.getElementById("number");
+          let value = inputValue.value;
+          let selectvalue = document.getElementById("select");
+          let selectValue = selectvalue.value;
+          // let celcius = document.getElementById("value1");
+          // let CelCius = celcius.value;
+          //let farhenheight = document.getElementById("value2");
+          //let farhen = farhenheight.value;
+          if (value > 0 || value < 0) {
+            if (selectValue == "Celcius") {
+              // document.getElementById("farhenheight").innerHTML =
+              // value * 1.8 + 32 + "F";
+
+              let farhen = (document.getElementById("farhenheight").value =
+                value * 1.8 + 32 + "F");
+              document.getElementById("value1").value = farhen;
+
+              let kelvin = (document.getElementById("kelvin").value =
+                value + 273.15 + "K");
+              document.getElementById("value2").value = kelvin;
+              document.getElementById("celcius").innerHTML = "";
+            }
+            if (selectValue == "Kelvin") {
+              let cel = (document.getElementById("celcius").value =
+                value - 273.15 + "C");
+              document.getElementById("value1").value = cel;
+
+              let far = (document.getElementById("farhenheight").value =
+                (value - 273.15) * 1.8 + 32 + "F");
+              document.getElementById("value2").value = far;
+              //document.getElementById("kelvin").innerHTML = "";
+            }
+            if (selectValue == "Farenheight") {
+              let far = (document.getElementById("celcius").value =
+                ((value - 32) * 5) / 9 + "C");
+              document.getElementById("value1").value = far;
+
+              let kel = (document.getElementById("kelvin").value =
+                value - (32 * 5) / 9 + 273.15 + "K");
+              document.getElementById("value2").value = kel;
+              //document.getElementById("farhenheight").innerHTML = "";
+            }
+          } else {
+            alert("plx enter a integer value");
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
